@@ -362,13 +362,12 @@ func (l *loadbalancers) EnsureLoadBalancerDeleted(ctx context.Context, clusterNa
 		return err
 	}
 
-	_, err = l.client.LoadBalancers.Delete(ctx, lb.ID)
-
+    err = l.EnsureFirewallDeleted(lb)
 	if err != nil {
 		return err
 	}
 
-    err = l.EnsureFirewallDeleted(lb)
+	_, err = l.client.LoadBalancers.Delete(ctx, lb.ID)
     return err
 }
 
