@@ -169,6 +169,11 @@ func (l *loadbalancers) EnsureLoadBalancer(ctx context.Context, clusterName stri
 			return nil, err
 		}
 
+		_, err = l.EnsureFWRuleExists(lb)
+		if err != nil {
+			return nil, err
+		}
+
 		return &v1.LoadBalancerStatus{
 			Ingress: []v1.LoadBalancerIngress{
 				{
@@ -230,6 +235,11 @@ func (l *loadbalancers) EnsureLoadBalancerDeleted(ctx context.Context, clusterNa
 	lbName := cloudprovider.GetLoadBalancerName(service)
 
 	lb, err := l.lbByName(ctx, lbName)
+	if err != nil {
+		return err
+	}
+
+	_, err = l.EnsureFWRuleDeleted(lb)
 	if err != nil {
 		return err
 	}
