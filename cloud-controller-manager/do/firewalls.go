@@ -17,9 +17,9 @@ limitations under the License.
 package do
 
 import (
+	"context"
 	"fmt"
 	"github.com/digitalocean/godo"
-	"github.com/digitalocean/godo/context"
 	"strconv"
 	"strings"
 )
