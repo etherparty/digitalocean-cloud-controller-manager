@@ -1,5 +1,8 @@
 # CHANGELOG
 
+## v0.1.9 (beta) - Feb 7th 2019
+* Support for modifying firewall rules to allow traffic from loadbalancer
+
 ## v0.1.8 (beta) - Oct 24th 2018
 * add support for loadbalancer health check paths via service annotation `service.beta.kubernetes.io/do-loadbalancer-healthcheck-path` (@andrewsykim)
 * various clean ups (golint, CI, etc) (@timoreimann)
